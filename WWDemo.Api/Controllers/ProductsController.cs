@@ -44,9 +44,9 @@ namespace WWDemo.Api.Controllers
 		}
 
 		[HttpGet("serial-number")]
-		public async Task<IActionResult> GetProductBySerialNumber([FromRoute(Name = "serial-number")]int serialNumber)
+		public async Task<IActionResult> GetProductBySerialNumber([FromRoute(Name = "serial-number")]string serialNumber)
 		{
-            var result = await _mediator.Send(new GetProductBySerialNumberQuery());// map serial number
+            var result = await _mediator.Send(new GetProductBySerialNumberQuery() { SerialNumber = serialNumber});// map serial number
             
 			return Ok();
 		}
